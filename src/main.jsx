@@ -58,38 +58,54 @@ const projects = [
     description:
       "도메인 중심 설계와 안정적인 API 흐름을 목표로 만든 Spring Boot 기반 백엔드 프로젝트입니다.",
     tags: ["Spring Boot", "Java", "JPA", "REST API"],
+    links: [
+      {
+        label: "포트폴리오 PDF",
+        href: assetPath("company-portfolio.pdf"),
+      },
+    ],
   },
   {
-    title: "Portfolio Website",
-    type: "Website",
+    title: "Biblical Archaeology Web",
+    type: "Web · Frontend",
     icon: Code2,
     description:
-      "개발자의 역량과 프로젝트를 직관적으로 보여주는 반응형 홈페이지 프로젝트입니다.",
-    tags: ["React", "Vite", "CSS", "UI"],
+      "React 기반 화면 구성과 Firebase 배포를 활용해 제작한 성서고고학 웹사이트 프로젝트입니다.",
+    tags: ["React", "Firebase", "Web", "Frontend"],
+    links: [
+      {
+        label: "사이트 보기",
+        href: "https://sjs-biblical-archaeology.web.app/",
+      },
+    ],
   },
   {
-    title: "React Web Application",
-    type: "Frontend",
-    icon: Terminal,
-    description:
-      "사용자 흐름과 컴포넌트 구조를 중심으로 구현한 React 기반 웹 애플리케이션입니다.",
-    tags: ["React", "JavaScript", "Component", "SPA"],
-  },
-  {
-    title: "React Native Mobile App",
+    title: "GodTalk Mobile App",
     type: "Mobile",
     icon: Smartphone,
     description:
       "모바일 사용성과 화면 전환 흐름을 고려해 제작한 React Native 앱 프로젝트입니다.",
     tags: ["React Native", "Mobile", "App UX", "API"],
+    links: [
+      {
+        label: "앱스토어 보기",
+        href: "https://apps.apple.com/kr/app/godtalk-%EA%B0%93%ED%86%A1/id6757742863",
+      },
+    ],
   },
   {
-    title: "Machine Learning Project",
+    title: "Prediction Model Mini Project",
     type: "AI",
     icon: BrainCircuit,
     description:
       "데이터 전처리, 모델 학습, 성능 평가를 거쳐 문제 해결 가능성을 검증한 머신러닝 프로젝트입니다.",
-    tags: ["Python", "ML", "Data", "Evaluation"],
+    tags: ["Python", "sklearn", "pandas", "Evaluation"],
+    links: [
+      {
+        label: "PPT 다운로드",
+        href: assetPath("prediction-mini-project.pptx"),
+      },
+    ],
   },
 ];
 
@@ -268,7 +284,7 @@ function App() {
             <div className="section-label">프로젝트</div>
             <h2>Selected work</h2>
           </div>
-          <p>프로젝트 상세 링크와 저장소 주소는 준비되는 대로 각 카드에 연결할 수 있습니다.</p>
+          <p>웹사이트, 앱스토어, PDF, PPT 자료를 각 프로젝트 카드에서 바로 확인할 수 있습니다.</p>
         </div>
         <div className="projects-grid">
           {projects.map((project) => {
@@ -286,10 +302,21 @@ function App() {
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
-                <a className="project-link" href="#contact" aria-label={`${project.title} 문의하기`}>
-                  자세히 논의하기
-                  <ArrowUpRight size={16} />
-                </a>
+                <div className="project-links">
+                  {project.links.map((link) => (
+                    <a
+                      className="project-link"
+                      href={link.href}
+                      key={link.label}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${project.title} ${link.label}`}
+                    >
+                      {link.label}
+                      <ArrowUpRight size={16} />
+                    </a>
+                  ))}
+                </div>
               </article>
             );
           })}
@@ -362,6 +389,10 @@ function App() {
           <a href="mailto:ljk8324@gmail.com">
             <Mail size={18} />
             ljk8324@gmail.com
+          </a>
+          <a href={assetPath("company-portfolio.pdf")} target="_blank" rel="noreferrer">
+            <Terminal size={18} />
+            Portfolio PDF
           </a>
           <a href="https://github.com/" target="_blank" rel="noreferrer">
             <Code2 size={18} />
