@@ -102,8 +102,8 @@ const projects = [
     tags: ["Python", "sklearn", "pandas", "Evaluation"],
     links: [
       {
-        label: "PPT 다운로드",
-        href: assetPath("prediction-mini-project.pptx"),
+        label: "PDF 보기",
+        href: assetPath("prediction-mini-project.pdf"),
       },
     ],
   },
