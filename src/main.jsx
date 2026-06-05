@@ -8,6 +8,7 @@ import {
   Layers,
   Mail,
   Menu,
+  Phone,
   ServerCog,
   Smartphone,
   Sparkles,
@@ -30,22 +31,22 @@ const skillGroups = [
   {
     title: "Backend",
     icon: ServerCog,
-    items: ["Spring Boot", "REST API", "JPA", "Security", "Architecture"],
+    items: ["SpringBoot", "Java", "JPA", "XML", "MyBatis"],
   },
   {
     title: "ML/DL & AI",
     icon: BrainCircuit,
-    items: ["Machine Learning", "Deep Learning", "Model Training", "Python", "Data Pipeline"],
+    items: ["sklearn", "numpy", "pandas", "seaborn", "matplotlib", "Pytorch"],
   },
   {
-    title: "Frontend & App",
+    title: "Frontend",
     icon: Layers,
-    items: ["React", "Vite", "React Native", "Responsive UI", "State Design"],
+    items: ["React", "React-Native", "Vite", "Expogo", "HTML", "CSS", "JavaScript", "AJAX"],
   },
   {
     title: "Data & Infra",
     icon: Database,
-    items: ["SQL", "API Integration", "Deployment", "Monitoring", "Git"],
+    items: ["MySQL", "OracleDB", "Git", "GitHub Codespace", "firebase"],
   },
 ];
 
@@ -346,13 +347,21 @@ function App() {
           <div className="section-label">연락처</div>
           <h2>좋은 문제를 함께 풀 준비가 되어 있습니다.</h2>
           <p>
-            프로젝트 링크, GitHub, 이메일 주소를 알려주면 바로 실제 연락 정보로 교체할 수 있습니다.
+            백엔드, AI, 웹 서비스 프로젝트와 관련해 편하게 연락 주세요.
           </p>
         </div>
         <div className="contact-actions">
-          <a href="mailto:your-email@example.com">
+          <a href="tel:010-6554-2523">
+            <Phone size={18} />
+            010-6554-2523
+          </a>
+          <a href="mailto:ljk8324@naver.com">
             <Mail size={18} />
-            your-email@example.com
+            ljk8324@naver.com
+          </a>
+          <a href="mailto:ljk8324@gmail.com">
+            <Mail size={18} />
+            ljk8324@gmail.com
           </a>
           <a href="https://github.com/" target="_blank" rel="noreferrer">
             <Code2 size={18} />
