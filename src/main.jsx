@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
+const assetPath = (fileName) => `${import.meta.env.BASE_URL}${fileName}`;
+
 const navItems = [
   { label: "소개", href: "#about" },
   { label: "기술스택", href: "#skills" },
@@ -182,17 +184,22 @@ function App() {
       </header>
 
       <section id="top" className="hero" aria-labelledby="hero-title">
-        <img className="hero-image" src="/hero-ai-systems.png" alt="" />
+        <img className="hero-image" src={assetPath("hero-ai-systems.png")} alt="" />
         <div className="hero-shade" />
         <div className="hero-content">
           <p className="eyebrow">
             <Sparkles size={16} />
             Backend · ML/DL · AI Developer
           </p>
-          <h1 id="hero-title">임종경</h1>
-          <p className="hero-copy">
-            안정적인 백엔드 구조와 데이터 기반 AI 모델을 연결해, 실제 서비스에서 작동하는 지능형 시스템을 만듭니다.
-          </p>
+          <div className="hero-profile">
+            <img src={assetPath("profile.jpeg")} alt="임종경 프로필 사진" />
+            <div>
+              <h1 id="hero-title">임종경</h1>
+              <p className="hero-copy">
+                안정적인 백엔드 구조와 데이터 기반 AI 모델을 연결해, 실제 서비스에서 작동하는 지능형 시스템을 만듭니다.
+              </p>
+            </div>
+          </div>
           <div className="hero-actions">
             <a className="primary-link" href="#projects">
               프로젝트 보기
@@ -213,20 +220,11 @@ function App() {
       <section id="about" className="section about-section">
         <div className="section-label">소개</div>
         <div className="about-grid">
-          <div>
-            <h2>서비스의 뼈대와 지능을 함께 설계하는 개발자</h2>
-            <div className="profile-card">
-              <img src="/profile.jpeg" alt="임종경 프로필 사진" />
-              <div>
-                <strong>임종경</strong>
-                <span>Backend · ML/DL · AI Developer</span>
-              </div>
-            </div>
-          </div>
+          <h2>서비스의 뼈대와 지능을 함께 설계하는 개발자</h2>
           <div className="about-copy">
             <p>
-              임종경은 백엔드 개발을 기반으로 ML/DL, AI 프로젝트까지 확장해온 개발자입니다.
-              견고한 API, 명확한 데이터 흐름, 모델이 실제 제품 안에서 동작하는 방식에 관심이 많습니다.
+              백엔드 개발을 기반으로 ML/DL, AI 프로젝트까지 확장해온 개발자입니다.
+              견고한 API와 명확한 데이터 흐름을 만들고, 모델이 실제 제품 안에서 동작하는 방식까지 함께 고민합니다.
             </p>
             <p>
               Spring Boot와 React 생태계를 활용해 웹과 앱을 구현하고, 머신러닝 프로젝트에서는 데이터 전처리부터 모델 평가까지 문제 해결 과정을 직접 다룹니다.

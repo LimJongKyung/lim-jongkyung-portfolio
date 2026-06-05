@@ -156,7 +156,23 @@ button {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 780px;
+  max-width: 880px;
+}
+
+.hero-profile {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 34px);
+}
+
+.hero-profile img {
+  width: 150px;
+  height: 190px;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.35);
 }
 
 .eyebrow {
@@ -288,42 +304,6 @@ h1 {
 
 .about-copy p:last-child {
   margin-bottom: 0;
-}
-
-.profile-card {
-  display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
-  align-items: center;
-  gap: 18px;
-  max-width: 430px;
-  margin-top: 30px;
-  padding: 14px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.profile-card img {
-  width: 112px;
-  height: 140px;
-  object-fit: cover;
-  object-position: center top;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.profile-card strong,
-.profile-card span {
-  display: block;
-}
-
-.profile-card strong {
-  margin-bottom: 6px;
-  font-size: 22px;
-}
-
-.profile-card span {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.5;
 }
 
 .skills-grid,
@@ -584,6 +564,16 @@ h1 {
     right: auto;
   }
 
+  .hero-profile {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .hero-profile img {
+    width: 96px;
+    height: 122px;
+  }
+
   .section {
     padding-top: 72px;
     padding-bottom: 72px;
@@ -606,13 +596,15 @@ h1 {
     justify-content: start;
   }
 
-  .profile-card {
-    grid-template-columns: 88px minmax(0, 1fr);
-    max-width: none;
+}
+
+@media (max-width: 460px) {
+  .hero-profile {
+    grid-template-columns: 1fr;
   }
 
-  .profile-card img {
-    width: 88px;
-    height: 112px;
+  .hero-profile img {
+    width: 112px;
+    height: 142px;
   }
 }
