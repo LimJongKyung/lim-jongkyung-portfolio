@@ -20,6 +20,7 @@ const navItems = [
   { label: "소개", href: "#about" },
   { label: "기술스택", href: "#skills" },
   { label: "프로젝트", href: "#projects" },
+  { label: "교육", href: "#education" },
   { label: "연락처", href: "#contact" },
 ];
 
@@ -89,6 +90,70 @@ const projects = [
   },
 ];
 
+const educationPrograms = [
+  {
+    period: "2026. 04 ~ 2026. 09",
+    title: "헬스케어 데이터 기반 인공지능 디지털 의료 웹 서비스 개발자 양성과정",
+    organization: "넥스트러너스평생교육시설",
+    details: [
+      "Python을 활용한 헬스케어 데이터 분석 및 시각화",
+      "Database를 활용한 헬스케어 데이터 분석",
+      "헬스케어 데이터 기반 분석 및 시각화 미니 프로젝트",
+      "진료 기록 요약을 위한 자연어 처리(NLP)",
+    ],
+  },
+  {
+    period: "2025. 06 ~ 2025. 06",
+    title: "AWS TechCamp",
+    organization: "AWS",
+    details: [
+      "처음 시작하는 AWS: 기초부터 웹 서비스 구축까지",
+      "서버리스로 가속하는 현대적 웹 애플리케이션 구축",
+      "손쉬운 Agent 조합으로 복잡한 문제를 해결하는 스마트 비서 만들기",
+      "Amazon Q 개발자 워크샵 - Q-Words 앱 구축하기",
+      "제조업, 여행 및 숙박업 사례 기반 디지털 전환 워크샵",
+    ],
+  },
+  {
+    period: "2024. 04 ~ 2024. 09",
+    title: "(디지털컨버전스) 공공데이터 융합 자바개발자 양성과정 A30",
+    organization: "KH정보교육원",
+    details: [
+      "Java, SQL, 데이터베이스, 네트워크 프로그래밍",
+      "UI 디자인 및 구현, 서버 프로그램 구현",
+      "요구사항 확인, 화면 구현, 통합 구현",
+      "공공데이터 활용 프로젝트, 애플리케이션 테스트 및 배포",
+    ],
+  },
+];
+
+const academicHistory = [
+  {
+    period: "2022. 03 ~ 2026. 02",
+    status: "졸업",
+    title: "장로회신학대학교 신학대학원",
+    description: "신학과 석사과정(3년제)",
+  },
+  {
+    period: "2018. 03 ~ 2022. 02",
+    status: "졸업",
+    title: "장로회신학대학교",
+    description: "신학과 편입",
+  },
+  {
+    period: "2016. 03 ~ 2018. 02",
+    status: "중퇴",
+    title: "호남신학대학교",
+    description: "신학과 재학 후 장로회신학대학교 편입",
+  },
+  {
+    period: "2012",
+    status: "졸업",
+    title: "영동일고등학교",
+    description: "고등학교 졸업",
+  },
+];
+
 function App() {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
@@ -148,7 +213,16 @@ function App() {
       <section id="about" className="section about-section">
         <div className="section-label">소개</div>
         <div className="about-grid">
-          <h2>서비스의 뼈대와 지능을 함께 설계하는 개발자</h2>
+          <div>
+            <h2>서비스의 뼈대와 지능을 함께 설계하는 개발자</h2>
+            <div className="profile-card">
+              <img src="/profile.jpeg" alt="임종경 프로필 사진" />
+              <div>
+                <strong>임종경</strong>
+                <span>Backend · ML/DL · AI Developer</span>
+              </div>
+            </div>
+          </div>
           <div className="about-copy">
             <p>
               임종경은 백엔드 개발을 기반으로 ML/DL, AI 프로젝트까지 확장해온 개발자입니다.
@@ -220,6 +294,52 @@ function App() {
               </article>
             );
           })}
+        </div>
+      </section>
+
+      <section id="education" className="section education-section">
+        <div className="section-heading">
+          <div>
+            <div className="section-label">교육 및 학력</div>
+            <h2>Learning timeline</h2>
+          </div>
+          <p>
+            Java 백엔드 교육에서 헬스케어 AI, AWS 클라우드까지 실무형 학습 경험을 쌓았습니다.
+          </p>
+        </div>
+        <div className="timeline-layout">
+          <div>
+            <h3 className="timeline-title">교육</h3>
+            <div className="timeline-list">
+              {educationPrograms.map((item) => (
+                <article className="timeline-item" key={item.title}>
+                  <span className="timeline-period">{item.period}</span>
+                  <h4>{item.title}</h4>
+                  <p>{item.organization}</p>
+                  <ul>
+                    {item.details.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="timeline-title">학력</h3>
+            <div className="timeline-list compact">
+              {academicHistory.map((item) => (
+                <article className="timeline-item" key={`${item.period}-${item.title}`}>
+                  <div className="academic-meta">
+                    <span className="timeline-period">{item.period}</span>
+                    <span>{item.status}</span>
+                  </div>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
