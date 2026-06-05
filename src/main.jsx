@@ -64,7 +64,7 @@ const projects = [
     type: "Website",
     icon: Code2,
     description:
-      "개발자의 역량과 프로젝트를 한눈에 볼 수 있도록 구성한 반응형 홈페이지 프로젝트입니다.",
+      "개발자의 역량과 프로젝트를 직관적으로 보여주는 반응형 홈페이지 프로젝트입니다.",
     tags: ["React", "Vite", "CSS", "UI"],
   },
   {
@@ -80,7 +80,7 @@ const projects = [
     type: "Mobile",
     icon: Smartphone,
     description:
-      "모바일 환경의 사용성과 화면 전환 경험을 고려해 제작한 React Native 앱 프로젝트입니다.",
+      "모바일 사용성과 화면 전환 흐름을 고려해 제작한 React Native 앱 프로젝트입니다.",
     tags: ["React Native", "Mobile", "App UX", "API"],
   },
   {
@@ -197,7 +197,7 @@ function App() {
             <div>
               <h1 id="hero-title">임종경</h1>
               <p className="hero-copy">
-                안정적인 백엔드 구조와 데이터 기반 AI 모델을 연결해, 실제 서비스에서 작동하는 지능형 시스템을 만듭니다.
+                문제를 해결하고 효율을 만드는 백엔드, AI 개발자!
               </p>
             </div>
           </div>
@@ -221,14 +221,14 @@ function App() {
       <section id="about" className="section about-section">
         <div className="section-label">소개</div>
         <div className="about-grid">
-          <h2>서비스의 뼈대와 지능을 함께 설계하는 개발자</h2>
+          <h2>문제 해결을 서비스로 구현하는 개발자</h2>
           <div className="about-copy">
             <p>
               백엔드 개발을 기반으로 ML/DL, AI 프로젝트까지 확장해온 개발자입니다.
-              견고한 API와 명확한 데이터 흐름을 만들고, 모델이 실제 제품 안에서 동작하는 방식까지 함께 고민합니다.
+              견고한 API, 명확한 데이터 흐름, 실제 서비스에 적용되는 모델 구조를 함께 고민합니다.
             </p>
             <p>
-              Spring Boot와 React 생태계를 활용해 웹과 앱을 구현하고, 머신러닝 프로젝트에서는 데이터 전처리부터 모델 평가까지 문제 해결 과정을 직접 다룹니다.
+              Spring Boot와 React 생태계를 활용해 웹과 앱을 구현하고, 머신러닝 프로젝트에서는 데이터 전처리부터 모델 평가까지 직접 다룹니다.
             </p>
           </div>
         </div>
@@ -303,7 +303,7 @@ function App() {
             <h2>Learning timeline</h2>
           </div>
           <p>
-            Java 백엔드 교육에서 헬스케어 AI, AWS 클라우드까지 실무형 학습 경험을 쌓았습니다.
+            Java 백엔드, 헬스케어 AI, AWS 클라우드까지 실무형 학습 경험을 쌓았습니다.
           </p>
         </div>
         <div className="timeline-layout">
@@ -345,7 +345,7 @@ function App() {
       <section id="contact" className="section contact-section">
         <div>
           <div className="section-label">연락처</div>
-          <h2>좋은 문제를 함께 풀 준비가 되어 있습니다.</h2>
+          <h2>함께 풀 문제를 기다리고 있습니다.</h2>
           <p>
             백엔드, AI, 웹 서비스 프로젝트와 관련해 편하게 연락 주세요.
           </p>
