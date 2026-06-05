@@ -5,7 +5,6 @@ import {
   BrainCircuit,
   Code2,
   Database,
-  Github,
   Layers,
   Mail,
   Menu,
@@ -238,7 +237,7 @@ function App() {
             your-email@example.com
           </a>
           <a href="https://github.com/" target="_blank" rel="noreferrer">
-            <Github size={18} />
+            <Code2 size={18} />
             GitHub
           </a>
         </div>
