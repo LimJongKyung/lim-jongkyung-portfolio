@@ -60,6 +60,10 @@ const projects = [
     tags: ["Spring Boot", "Java", "JPA", "REST API"],
     links: [
       {
+        label: "홈페이지 가보기",
+        href: "http://168.107.2.100:8080/",
+      },
+      {
         label: "포트폴리오 PDF",
         href: assetPath("company-portfolio.pdf"),
       },
