@@ -61,7 +61,7 @@ const projects = [
     links: [
       {
         label: "홈페이지 가보기",
-        href: "http://168.107.2.100:8080/",
+        href: "https://refreshmarket.168-107-2-100.sslip.io/",
       },
       {
         label: "포트폴리오 PDF",
