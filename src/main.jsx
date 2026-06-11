@@ -83,8 +83,8 @@ const projects = [
     type: "Web · Frontend",
     icon: Code2,
     description:
-      "React 기반 화면 구성과 Firebase 배포를 활용해 제작한 성서고고학 웹사이트 프로젝트입니다.",
-    tags: ["React", "Firebase", "Web", "Frontend"],
+      "React 기반 컴포넌트 구조와 반응형 화면을 적용해 제작한 성서고고학 웹사이트입니다. 사용자가 다양한 자료를 편리하게 탐색할 수 있도록 콘텐츠 흐름과 화면 구성을 설계하고, Firebase를 활용해 실제 웹 환경에 배포했습니다.",
+    tags: ["React", "JavaScript", "Firebase", "Responsive Web", "Frontend"],
     links: [
       {
         label: "사이트 보기",
@@ -97,8 +97,8 @@ const projects = [
     type: "Mobile",
     icon: Smartphone,
     description:
-      "모바일 사용성과 화면 전환 흐름을 고려해 제작한 React Native 앱 프로젝트입니다.",
-    tags: ["React Native", "Mobile", "App UX", "API"],
+      "React Native로 개발하고 App Store에 정식 출시한 모바일 앱 프로젝트입니다. 모바일 사용성과 자연스러운 화면 전환 흐름을 고려했으며, 재사용 가능한 컴포넌트와 API 연동을 통해 실제 서비스 형태로 구현했습니다.",
+    tags: ["React Native", "Expo", "Mobile", "App UX", "API", "App Store"],
     links: [
       {
         label: "앱스토어 보기",
