@@ -494,6 +494,46 @@ h1 {
   line-height: 1.72;
 }
 
+.test-account {
+  margin-top: 18px;
+  padding: 14px;
+  border-left: 3px solid var(--cyan);
+  background: rgba(77, 216, 255, 0.07);
+}
+
+.test-account strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--cyan);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.test-account p {
+  margin-bottom: 10px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.test-account > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.test-account span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.test-account code {
+  margin-left: 5px;
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+}
+
 .project-links {
   display: flex;
   flex-wrap: wrap;

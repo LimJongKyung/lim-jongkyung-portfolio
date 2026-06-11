@@ -60,14 +60,23 @@ const projects = [
     tags: ["Spring Boot", "Java", "JPA", "REST API"],
     links: [
       {
-        label: "홈페이지 가보기",
+        label: "사용자 페이지",
         href: "https://refreshmarket.168-107-2-100.sslip.io/",
+      },
+      {
+        label: "관리자 페이지",
+        href: "https://refreshmarket-management.168-107-49-23.sslip.io/",
       },
       {
         label: "포트폴리오 PDF",
         href: assetPath("company-portfolio.pdf"),
       },
     ],
+    testAccount: {
+      description: "관리자 페이지를 체험할 수 있는 테스트 계정입니다.",
+      username: "portfolio",
+      password: "portfolio1234",
+    },
   },
   {
     title: "Biblical Archaeology Web",
@@ -306,6 +315,20 @@ function App() {
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
+                {project.testAccount && (
+                  <div className="test-account">
+                    <strong>Test Account</strong>
+                    <p>{project.testAccount.description}</p>
+                    <div>
+                      <span>
+                        ID <code>{project.testAccount.username}</code>
+                      </span>
+                      <span>
+                        PW <code>{project.testAccount.password}</code>
+                      </span>
+                    </div>
+                  </div>
+                )}
                 <div className="project-links">
                   {project.links.map((link) => (
                     <a
