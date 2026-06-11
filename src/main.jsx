@@ -73,7 +73,7 @@ const projects = [
       },
     ],
     testAccount: {
-      description: "관리자 페이지를 체험할 수 있는 테스트 계정입니다.",
+      description: "사용자 페이지와 관리자 페이지를 모두 체험할 수 있는 테스트 계정입니다.",
       username: "portfolio",
       password: "portfolio1234",
     },
