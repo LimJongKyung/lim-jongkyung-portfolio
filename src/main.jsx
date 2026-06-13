@@ -95,7 +95,7 @@ const skillGroups = [
   {
     title: "Backend",
     icon: ServerCog,
-    items: ["SpringBoot", "Java", "JPA", "XML", "MyBatis"],
+    items: ["SpringBoot", "Java", "JPA", "XML", "MyBatis", "Oracle Cloud"],
   },
   {
     title: "ML/DL & AI",
@@ -145,7 +145,7 @@ const projects = [
         "Use this test account to explore both the user and admin pages.",
       ),
       username: "portfolio",
-      password: "portfolio1234",
+      password: "*Portfolio1234",
     },
   },
   {
