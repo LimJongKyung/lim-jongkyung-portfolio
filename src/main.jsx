@@ -134,10 +134,6 @@ const projects = [
         label: localized("관리자 페이지", "Admin Page"),
         href: "https://refreshmarket-management.168-107-49-23.sslip.io/",
       },
-      {
-        label: localized("포트폴리오 PDF", "Portfolio PDF"),
-        href: assetPath("company-portfolio.pdf"),
-      },
     ],
     testAccount: {
       description: localized(
@@ -179,6 +175,10 @@ const projects = [
       {
         label: localized("앱스토어 보기", "View on App Store"),
         href: "https://apps.apple.com/kr/app/godtalk-%EA%B0%93%ED%86%A1/id6757742863",
+      },
+      {
+        label: localized("GodTalk 홈페이지", "GodTalk Website"),
+        href: "https://godtalk-6cd29.web.app/",
       },
     ],
   },
