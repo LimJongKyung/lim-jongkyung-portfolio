@@ -95,7 +95,7 @@ const skillGroups = [
   {
     title: "Backend",
     icon: ServerCog,
-    items: ["SpringBoot", "Java", "JPA", "XML", "MyBatis", "Oracle Cloud"],
+    items: ["SpringBoot", "Java", "JPA", "XML", "MyBatis"],
   },
   {
     title: "ML/DL & AI",
@@ -110,7 +110,7 @@ const skillGroups = [
   {
     title: "Data & Infra",
     icon: Database,
-    items: ["MySQL", "OracleDB", "Git", "GitHub Codespace", "firebase"],
+    items: ["MySQL", "OracleDB", "Git", "GitHub Codespace", "firebase", "GCP"],
   },
 ];
 
