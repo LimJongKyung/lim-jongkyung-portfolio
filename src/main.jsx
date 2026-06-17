@@ -128,11 +128,11 @@ const projects = [
     links: [
       {
         label: localized("사용자 페이지", "User Page"),
-        href: "https://refreshmarket.168-107-2-100.sslip.io/",
+        href: "https://refreshmarket-1069542000196.asia-northeast3.run.app/",
       },
       {
         label: localized("관리자 페이지", "Admin Page"),
-        href: "https://refreshmarket-management.168-107-49-23.sslip.io/",
+        href: "https://refreshmarket-management-1069542000196.asia-northeast3.run.app/",
       },
     ],
     testAccount: {
