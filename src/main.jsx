@@ -27,7 +27,6 @@ const navItems = [
   { label: localized("소개", "About"), href: "#about" },
   { label: localized("기술스택", "Skills"), href: "#skills" },
   { label: localized("프로젝트", "Projects"), href: "#projects" },
-  { label: localized("챗봇", "Chatbot"), href: "#chatbot" },
   { label: localized("교육", "Education"), href: "#education" },
   { label: localized("연락처", "Contact"), href: "#contact" },
 ];
@@ -55,7 +54,7 @@ const copy = {
     projectsLabel: "프로젝트",
     projectsCopy: "웹사이트, 앱스토어, PDF 자료를 각 프로젝트 카드에서 바로 확인할 수 있습니다.",
     chatbotLabel: "포트폴리오 챗봇",
-    chatbotTitle: "임종경에 대해 물어보세요.",
+    chatbotTitle: "임종경 봇",
     chatbotCopy:
       "기술스택, 프로젝트, 교육 이력, 연락 방법을 짧게 안내하는 API 기반 챗봇입니다.",
     chatbotPlaceholder: "예: 임종경은 어떤 개발자인가요?",
@@ -97,7 +96,7 @@ const copy = {
     projectsLabel: "Projects",
     projectsCopy: "Open live websites, App Store pages, and project PDFs directly from each project card.",
     chatbotLabel: "Portfolio Chatbot",
-    chatbotTitle: "Ask about Lim Jongkyung.",
+    chatbotTitle: "Lim Jongkyung Bot",
     chatbotCopy:
       "A compact API-powered chatbot that explains skills, projects, education, and contact details.",
     chatbotPlaceholder: "Ex: What kind of developer is Lim Jongkyung?",
@@ -350,6 +349,7 @@ const academicHistory = [
 function App() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [language, setLanguage] = React.useState("ko");
+  const [chatOpen, setChatOpen] = React.useState(false);
   const [chatInput, setChatInput] = React.useState("");
   const [chatMessages, setChatMessages] = React.useState([]);
   const [chatLoading, setChatLoading] = React.useState(false);
@@ -361,6 +361,7 @@ function App() {
     const cleanMessage = message.trim();
     if (!cleanMessage || chatLoading) return;
 
+    setChatOpen(true);
     setChatMessages((current) => [
       ...current,
       { role: "user", content: cleanMessage },
@@ -568,76 +569,6 @@ function App() {
         </div>
       </section>
 
-      <section id="chatbot" className="section chatbot-section">
-        <div className="section-heading">
-          <div>
-            <div className="section-label">{text.chatbotLabel}</div>
-            <h2>{text.chatbotTitle}</h2>
-          </div>
-          <p>{text.chatbotCopy}</p>
-        </div>
-        <div className="chatbot-panel">
-          <div className="chatbot-header">
-            <div className="card-icon">
-              <Bot size={22} />
-            </div>
-            <div>
-              <h3>Lim Jongkyung Bot</h3>
-              <p>API · Short answers · Portfolio only</p>
-            </div>
-          </div>
-          <div className="starter-row">
-            {[text.chatbotStarterOne, text.chatbotStarterTwo, text.chatbotStarterThree].map(
-              (starter) => (
-                <button
-                  key={starter}
-                  type="button"
-                  onClick={() => askPortfolioBot(starter)}
-                  disabled={chatLoading}
-                >
-                  {starter}
-                </button>
-              ),
-            )}
-          </div>
-          <div className="chat-window" aria-live="polite">
-            {chatMessages.length === 0 ? (
-              <p className="chat-empty">{text.chatbotPlaceholder}</p>
-            ) : (
-              chatMessages.map((message, index) => (
-                <div className={`chat-message ${message.role}`} key={`${message.role}-${index}`}>
-                  {message.content}
-                </div>
-              ))
-            )}
-            {chatLoading && (
-              <div className="chat-message assistant loading">
-                <LoaderCircle size={16} />
-                {text.chatbotLoading}
-              </div>
-            )}
-          </div>
-          <form
-            className="chat-form"
-            onSubmit={(event) => {
-              event.preventDefault();
-              askPortfolioBot();
-            }}
-          >
-            <input
-              value={chatInput}
-              onChange={(event) => setChatInput(event.target.value)}
-              placeholder={text.chatbotPlaceholder}
-              maxLength={500}
-            />
-            <button type="submit" disabled={!chatInput.trim() || chatLoading}>
-              <Send size={17} />
-              {text.chatbotSend}
-            </button>
-          </form>
-        </div>
-      </section>
-
       <section id="education" className="section education-section">
         <div className="section-heading">
           <div>
@@ -711,6 +642,93 @@ function App() {
           </a>
         </div>
       </section>
+
+      <aside className={`chatbot-float ${chatOpen ? "is-open" : ""}`} aria-label={text.chatbotLabel}>
+        {chatOpen && (
+          <div className="chatbot-bubble" role="dialog" aria-label={text.chatbotTitle}>
+            <div className="chatbot-header">
+              <div className="robot-face" aria-hidden="true">
+                <span />
+                <i />
+              </div>
+              <div>
+                <h3>{text.chatbotTitle}</h3>
+                <p>{text.chatbotCopy}</p>
+              </div>
+              <button
+                className="chatbot-close"
+                type="button"
+                aria-label={text.menuClose}
+                onClick={() => setChatOpen(false)}
+              >
+                <X size={17} />
+              </button>
+            </div>
+            <div className="starter-row">
+              {[text.chatbotStarterOne, text.chatbotStarterTwo, text.chatbotStarterThree].map(
+                (starter) => (
+                  <button
+                    key={starter}
+                    type="button"
+                    onClick={() => askPortfolioBot(starter)}
+                    disabled={chatLoading}
+                  >
+                    {starter}
+                  </button>
+                ),
+              )}
+            </div>
+            <div className="chat-window" aria-live="polite">
+              {chatMessages.length === 0 ? (
+                <div className="chat-message assistant">{text.chatbotPlaceholder}</div>
+              ) : (
+                chatMessages.map((message, index) => (
+                  <div className={`chat-message ${message.role}`} key={`${message.role}-${index}`}>
+                    {message.content}
+                  </div>
+                ))
+              )}
+              {chatLoading && (
+                <div className="chat-message assistant loading">
+                  <LoaderCircle size={16} />
+                  {text.chatbotLoading}
+                </div>
+              )}
+            </div>
+            <form
+              className="chat-form"
+              onSubmit={(event) => {
+                event.preventDefault();
+                askPortfolioBot();
+              }}
+            >
+              <input
+                value={chatInput}
+                onChange={(event) => setChatInput(event.target.value)}
+                placeholder={text.chatbotPlaceholder}
+                maxLength={500}
+              />
+              <button type="submit" disabled={!chatInput.trim() || chatLoading}>
+                <Send size={17} />
+                {text.chatbotSend}
+              </button>
+            </form>
+          </div>
+        )}
+        <button
+          className="robot-launcher"
+          type="button"
+          aria-label={text.chatbotLabel}
+          onClick={() => setChatOpen((value) => !value)}
+        >
+          <span className="robot-antenna" />
+          <span className="robot-eyes">
+            <i />
+            <i />
+          </span>
+          <span className="robot-mouth" />
+        </button>
+      </aside>
     </main>
   );
 }
