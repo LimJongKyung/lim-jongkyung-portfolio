@@ -2,6 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/lim-jongkyung-portfolio/",
+  base: process.env.VERCEL ? "/" : "/lim-jongkyung-portfolio/",
   plugins: [react()],
 });

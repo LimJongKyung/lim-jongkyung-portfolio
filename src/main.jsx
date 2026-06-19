@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import {
   ArrowUpRight,
   BrainCircuit,
+  Bot,
   Code2,
   Database,
   Layers,
+  LoaderCircle,
   Mail,
   Menu,
+  Send,
   Phone,
   ServerCog,
   Smartphone,
@@ -24,6 +27,7 @@ const navItems = [
   { label: localized("소개", "About"), href: "#about" },
   { label: localized("기술스택", "Skills"), href: "#skills" },
   { label: localized("프로젝트", "Projects"), href: "#projects" },
+  { label: localized("챗봇", "Chatbot"), href: "#chatbot" },
   { label: localized("교육", "Education"), href: "#education" },
   { label: localized("연락처", "Contact"), href: "#contact" },
 ];
@@ -50,6 +54,18 @@ const copy = {
     skillsCopy: "백엔드 안정성, AI 실험력, 프론트 구현력을 한 프로젝트 흐름 안에서 연결합니다.",
     projectsLabel: "프로젝트",
     projectsCopy: "웹사이트, 앱스토어, PDF 자료를 각 프로젝트 카드에서 바로 확인할 수 있습니다.",
+    chatbotLabel: "포트폴리오 챗봇",
+    chatbotTitle: "임종경에 대해 물어보세요.",
+    chatbotCopy:
+      "기술스택, 프로젝트, 교육 이력, 연락 방법을 짧게 안내하는 API 기반 챗봇입니다.",
+    chatbotPlaceholder: "예: 임종경은 어떤 개발자인가요?",
+    chatbotSend: "질문하기",
+    chatbotLoading: "답변을 만드는 중입니다...",
+    chatbotFallback:
+      "챗봇 API가 아직 연결되지 않았습니다. Vercel 환경변수 OPENAI_API_KEY를 설정하면 활성화됩니다.",
+    chatbotStarterOne: "대표 프로젝트 알려줘",
+    chatbotStarterTwo: "백엔드 경험이 뭐야?",
+    chatbotStarterThree: "연락 방법 알려줘",
     testAccount: "테스트 계정",
     educationLabel: "교육 및 학력",
     educationCopy: "Java 백엔드, 헬스케어 AI, AWS 클라우드까지 실무형 학습 경험을 쌓았습니다.",
@@ -80,6 +96,18 @@ const copy = {
     skillsCopy: "I connect backend reliability, AI experimentation, and frontend implementation within a complete project workflow.",
     projectsLabel: "Projects",
     projectsCopy: "Open live websites, App Store pages, and project PDFs directly from each project card.",
+    chatbotLabel: "Portfolio Chatbot",
+    chatbotTitle: "Ask about Lim Jongkyung.",
+    chatbotCopy:
+      "A compact API-powered chatbot that explains skills, projects, education, and contact details.",
+    chatbotPlaceholder: "Ex: What kind of developer is Lim Jongkyung?",
+    chatbotSend: "Ask",
+    chatbotLoading: "Writing an answer...",
+    chatbotFallback:
+      "The chatbot API is not connected yet. Set OPENAI_API_KEY on Vercel to enable it.",
+    chatbotStarterOne: "Show key projects",
+    chatbotStarterTwo: "What backend experience?",
+    chatbotStarterThree: "How can I contact him?",
     testAccount: "Test Account",
     educationLabel: "Education",
     educationCopy: "Hands-on training across Java backend development, healthcare AI, and AWS cloud services.",
@@ -322,9 +350,49 @@ const academicHistory = [
 function App() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [language, setLanguage] = React.useState("ko");
+  const [chatInput, setChatInput] = React.useState("");
+  const [chatMessages, setChatMessages] = React.useState([]);
+  const [chatLoading, setChatLoading] = React.useState(false);
   const text = copy[language];
   const t = (value) =>
     value && typeof value === "object" && "ko" in value ? value[language] : value;
+
+  const askPortfolioBot = async (message = chatInput) => {
+    const cleanMessage = message.trim();
+    if (!cleanMessage || chatLoading) return;
+
+    setChatMessages((current) => [
+      ...current,
+      { role: "user", content: cleanMessage },
+    ]);
+    setChatInput("");
+    setChatLoading(true);
+
+    try {
+      const response = await fetch("/api/portfolio-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: cleanMessage }),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || "Chatbot API is unavailable.");
+      }
+
+      setChatMessages((current) => [
+        ...current,
+        { role: "assistant", content: data.answer },
+      ]);
+    } catch (error) {
+      setChatMessages((current) => [
+        ...current,
+        { role: "assistant", content: text.chatbotFallback },
+      ]);
+    } finally {
+      setChatLoading(false);
+    }
+  };
 
   return (
     <main lang={language}>
@@ -497,6 +565,76 @@ function App() {
               </article>
             );
           })}
+        </div>
+      </section>
+
+      <section id="chatbot" className="section chatbot-section">
+        <div className="section-heading">
+          <div>
+            <div className="section-label">{text.chatbotLabel}</div>
+            <h2>{text.chatbotTitle}</h2>
+          </div>
+          <p>{text.chatbotCopy}</p>
+        </div>
+        <div className="chatbot-panel">
+          <div className="chatbot-header">
+            <div className="card-icon">
+              <Bot size={22} />
+            </div>
+            <div>
+              <h3>Lim Jongkyung Bot</h3>
+              <p>API · Short answers · Portfolio only</p>
+            </div>
+          </div>
+          <div className="starter-row">
+            {[text.chatbotStarterOne, text.chatbotStarterTwo, text.chatbotStarterThree].map(
+              (starter) => (
+                <button
+                  key={starter}
+                  type="button"
+                  onClick={() => askPortfolioBot(starter)}
+                  disabled={chatLoading}
+                >
+                  {starter}
+                </button>
+              ),
+            )}
+          </div>
+          <div className="chat-window" aria-live="polite">
+            {chatMessages.length === 0 ? (
+              <p className="chat-empty">{text.chatbotPlaceholder}</p>
+            ) : (
+              chatMessages.map((message, index) => (
+                <div className={`chat-message ${message.role}`} key={`${message.role}-${index}`}>
+                  {message.content}
+                </div>
+              ))
+            )}
+            {chatLoading && (
+              <div className="chat-message assistant loading">
+                <LoaderCircle size={16} />
+                {text.chatbotLoading}
+              </div>
+            )}
+          </div>
+          <form
+            className="chat-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              askPortfolioBot();
+            }}
+          >
+            <input
+              value={chatInput}
+              onChange={(event) => setChatInput(event.target.value)}
+              placeholder={text.chatbotPlaceholder}
+              maxLength={500}
+            />
+            <button type="submit" disabled={!chatInput.trim() || chatLoading}>
+              <Send size={17} />
+              {text.chatbotSend}
+            </button>
+          </form>
         </div>
       </section>
 

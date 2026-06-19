@@ -1,0 +1,88 @@
+const MODEL = process.env.OPENAI_MODEL || "gpt-4.1-mini";
+
+const profileContext = `
+You are a compact portfolio chatbot for Lim Jongkyung.
+Answer only about Lim Jongkyung's portfolio, skills, projects, education, and contact.
+Keep answers concise, warm, and factual. If asked outside this scope, briefly redirect to portfolio-related topics.
+
+Profile facts:
+- Korean name: 임종경. English name: Lim Jongkyung.
+- Positioning: backend and AI developer who solves problems and improves efficiency.
+- Strengths: backend APIs, clear data flows, React/Vite frontend implementation, React Native app work, ML/DL experimentation.
+- Backend skills: Spring Boot, Java, JPA, XML, MyBatis, Oracle Cloud.
+- AI/data skills: sklearn, numpy, pandas, seaborn, matplotlib, PyTorch.
+- Frontend/mobile skills: React, React Native, Vite, Expo Go, HTML, CSS, JavaScript, AJAX.
+- Data/infra: MySQL, OracleDB, Git, GitHub Codespace, Firebase.
+- Projects:
+  1. Spring Boot Backend Service: domain-centered Spring Boot backend, Java, JPA, REST API. User and admin pages are linked from the portfolio.
+  2. Biblical Archaeology Web: React responsive website deployed with Firebase.
+  3. GodTalk Mobile App: React Native/Expo mobile app released on the App Store, with API integration and reusable components.
+  4. Prediction Model Mini Project: Python, sklearn, pandas, model training and evaluation.
+- Education/training:
+  2026.04-2026.09 Healthcare data-based AI digital medical web service developer program.
+  2025.06 AWS TechCamp.
+  2024.04-2024.09 Public Data Convergence Java Developer Program A30.
+  Theology master's program at Presbyterian University and Theological Seminary, graduated 2026.02.
+- Contact visible on portfolio: 010-6554-2523, ljk8324@naver.com, ljk8324@gmail.com.
+`;
+
+export default async function handler(request, response) {
+  if (request.method !== "POST") {
+    response.setHeader("Allow", "POST");
+    return response.status(405).json({ error: "Method not allowed" });
+  }
+
+  if (!process.env.OPENAI_API_KEY) {
+    return response.status(500).json({
+      error: "OPENAI_API_KEY is not configured on the server.",
+    });
+  }
+
+  try {
+    const { message } = request.body || {};
+    const cleanMessage = String(message || "").trim().slice(0, 500);
+
+    if (!cleanMessage) {
+      return response.status(400).json({ error: "Message is required." });
+    }
+
+    const openaiResponse = await fetch("https://api.openai.com/v1/responses", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        instructions: profileContext,
+        input: cleanMessage,
+        max_output_tokens: 220,
+      }),
+    });
+
+    const data = await openaiResponse.json();
+
+    if (!openaiResponse.ok) {
+      console.error("OpenAI API error", data);
+      return response.status(502).json({
+        error: "The portfolio chatbot could not answer right now.",
+      });
+    }
+
+    const answer =
+      data.output_text ||
+      data.output
+        ?.flatMap((item) => item.content || [])
+        .map((content) => content.text)
+        .filter(Boolean)
+        .join("\n") ||
+      "답변을 만들지 못했습니다. 잠시 후 다시 질문해 주세요.";
+
+    return response.status(200).json({ answer });
+  } catch (error) {
+    console.error("Portfolio chatbot error", error);
+    return response.status(500).json({
+      error: "The portfolio chatbot is temporarily unavailable.",
+    });
+  }
+}
