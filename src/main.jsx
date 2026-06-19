@@ -100,7 +100,7 @@ const skillGroups = [
   {
     title: "ML/DL & AI",
     icon: BrainCircuit,
-    items: ["sklearn", "numpy", "pandas", "seaborn", "matplotlib", "Pytorch"],
+    items: ["sklearn", "numpy", "pandas", "seaborn", "matplotlib", "Pytorch", "LLM", "GPT API"],
   },
   {
     title: "Frontend",
