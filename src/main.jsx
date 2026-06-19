@@ -57,6 +57,7 @@ const copy = {
     chatbotTitle: "임종경 봇",
     chatbotCopy:
       "기술스택, 프로젝트, 교육 이력, 연락 방법을 짧게 안내하는 API 기반 챗봇입니다.",
+    chatbotTeaser: "무엇이든 물어보세요!",
     chatbotPlaceholder: "예: 임종경은 어떤 개발자인가요?",
     chatbotSend: "질문하기",
     chatbotLoading: "답변을 만드는 중입니다...",
@@ -99,6 +100,7 @@ const copy = {
     chatbotTitle: "Lim Jongkyung Bot",
     chatbotCopy:
       "A compact API-powered chatbot that explains skills, projects, education, and contact details.",
+    chatbotTeaser: "Ask me anything!",
     chatbotPlaceholder: "Ex: What kind of developer is Lim Jongkyung?",
     chatbotSend: "Ask",
     chatbotLoading: "Writing an answer...",
@@ -721,6 +723,7 @@ function App() {
           aria-label={text.chatbotLabel}
           onClick={() => setChatOpen((value) => !value)}
         >
+          {!chatOpen && <span className="robot-teaser">{text.chatbotTeaser}</span>}
           <span className="robot-antenna" />
           <span className="robot-eyes">
             <i />
