@@ -535,6 +535,14 @@ main[lang="en"] #hero-title {
   white-space: pre-wrap;
 }
 
+.chat-message small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
 .chat-message.user {
   justify-self: end;
   background: var(--ink);

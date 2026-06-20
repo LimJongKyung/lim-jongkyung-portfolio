@@ -15,7 +15,6 @@ import {
   ServerCog,
   Smartphone,
   Sparkles,
-  Terminal,
   X,
 } from "lucide-react";
 import "./styles.css";
@@ -59,6 +58,8 @@ const copy = {
       "기술스택, 프로젝트, 교육 이력, 연락 방법을 짧게 안내하는 API 기반 챗봇입니다.",
     chatbotTeaser: "무엇이든 물어보세요!",
     chatbotPlaceholder: "예: 임종경은 어떤 개발자인가요?",
+    chatbotPrivacyNote:
+      "개인정보는 이력서를 통해 참고 부탁드립니다! 개인정보에 대한 질문은 받지 않고 있습니다!",
     chatbotSend: "질문하기",
     chatbotLoading: "답변을 만드는 중입니다...",
     chatbotFallback:
@@ -102,6 +103,8 @@ const copy = {
       "A compact API-powered chatbot that explains skills, projects, education, and contact details.",
     chatbotTeaser: "Ask me anything!",
     chatbotPlaceholder: "Ex: What kind of developer is Lim Jongkyung?",
+    chatbotPrivacyNote:
+      "Please refer to the resume for personal details. Personal-information questions are not accepted.",
     chatbotSend: "Ask",
     chatbotLoading: "Writing an answer...",
     chatbotFallback:
@@ -129,7 +132,14 @@ const skillGroups = [
   {
     title: "ML/DL & AI",
     icon: BrainCircuit,
-    items: ["sklearn", "numpy", "pandas", "seaborn", "matplotlib", "Pytorch", "LLM", "GPT API"],
+    items: [
+      "Data Preprocessing",
+      "Feature Engineering",
+      "Model Training",
+      "Model Evaluation",
+      "NLP",
+      "LLM API Integration",
+    ],
   },
   {
     title: "Frontend",
@@ -225,6 +235,24 @@ const projects = [
       {
         label: localized("PDF 보기", "View PDF"),
         href: assetPath("prediction-mini-project.pdf"),
+      },
+    ],
+  },
+  {
+    title: "Portfolio Chatbot",
+    type: "AI · API",
+    icon: Bot,
+    description:
+      localized(
+        "포트폴리오 방문자가 기술스택, 프로젝트, 교육 이력을 빠르게 확인할 수 있도록 만든 서버리스 API 기반 챗봇입니다. OpenAI API를 브라우저에 노출하지 않도록 Vercel 함수로 질문을 처리합니다.",
+        "A serverless API chatbot that helps visitors quickly explore skills, projects, and education history. Questions are handled through a Vercel function so the OpenAI API key is not exposed in the browser.",
+      ),
+    tags: ["OpenAI API", "Vercel Function", "React", "Prompt Design"],
+    links: [
+      {
+        label: localized("챗봇 열기", "Open Chatbot"),
+        href: "#chatbot",
+        internal: true,
       },
     ],
   },
@@ -556,8 +584,13 @@ function App() {
                       className="project-link"
                       href={link.href}
                       key={t(link.label)}
-                      target="_blank"
-                      rel="noreferrer"
+                      target={link.internal ? undefined : "_blank"}
+                      rel={link.internal ? undefined : "noreferrer"}
+                      onClick={
+                        link.href === "#chatbot"
+                          ? () => setChatOpen(true)
+                          : undefined
+                      }
                       aria-label={`${project.title} ${t(link.label)}`}
                     >
                       {t(link.label)}
@@ -634,18 +667,14 @@ function App() {
             <Mail size={18} />
             ljk8324@gmail.com
           </a>
-          <a href={assetPath("company-portfolio.pdf")} target="_blank" rel="noreferrer">
-            <Terminal size={18} />
-            Portfolio PDF
-          </a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a href="https://github.com/LimJongKyung/lim-jongkyung-portfolio" target="_blank" rel="noreferrer">
             <Code2 size={18} />
             GitHub
           </a>
         </div>
       </section>
 
-      <aside className={`chatbot-float ${chatOpen ? "is-open" : ""}`} aria-label={text.chatbotLabel}>
+      <aside id="chatbot" className={`chatbot-float ${chatOpen ? "is-open" : ""}`} aria-label={text.chatbotLabel}>
         {chatOpen && (
           <div className="chatbot-bubble" role="dialog" aria-label={text.chatbotTitle}>
             <div className="chatbot-header">
@@ -682,7 +711,10 @@ function App() {
             </div>
             <div className="chat-window" aria-live="polite">
               {chatMessages.length === 0 ? (
-                <div className="chat-message assistant">{text.chatbotPlaceholder}</div>
+                <div className="chat-message assistant">
+                  <span>{text.chatbotPlaceholder}</span>
+                  <small>{text.chatbotPrivacyNote}</small>
+                </div>
               ) : (
                 chatMessages.map((message, index) => (
                   <div className={`chat-message ${message.role}`} key={`${message.role}-${index}`}>
