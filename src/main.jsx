@@ -206,10 +206,10 @@ const projects = [
     icon: Smartphone,
     description:
       localized(
-        "React Native로 개발하고 App Store에 정식 출시한 모바일 앱 프로젝트입니다. 모바일 사용성과 자연스러운 화면 전환 흐름을 고려했으며, 재사용 가능한 컴포넌트와 API 연동을 통해 실제 서비스 형태로 구현했습니다.",
-        "A React Native mobile application officially released on the App Store. It features mobile-focused usability, smooth navigation, reusable components, and API integration.",
+        "React Native로 개발하고 App Store에 정식 출시한 모바일 앱 프로젝트입니다. 모바일 앱과 웹사이트에 Gemini 기반 말씀상담 LLM 서비스를 연동했으며, Firebase Functions로 API 키를 보호하고 모델 fallback을 구성해 실제 서비스 형태로 구현했습니다.",
+        "A React Native mobile application officially released on the App Store. I added a Gemini-powered Bible counseling LLM service to both the mobile app and website, protecting the API key through Firebase Functions and adding model fallback for production use.",
       ),
-    tags: ["React Native", "Expo", "Mobile", "App UX", "API", "App Store"],
+    tags: ["React Native", "Expo", "Gemini API", "LLM", "Firebase Functions", "App Store"],
     links: [
       {
         label: localized("앱스토어 보기", "View on App Store"),

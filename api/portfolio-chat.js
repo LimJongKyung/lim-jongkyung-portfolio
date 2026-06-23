@@ -17,7 +17,7 @@ Profile facts:
 - Projects:
   1. Spring Boot Backend Service: domain-centered Spring Boot backend, Java, JPA, REST API. User and admin pages are linked from the portfolio.
   2. Biblical Archaeology Web: React responsive website deployed with Firebase.
-  3. GodTalk Mobile App: React Native/Expo mobile app released on the App Store, with API integration and reusable components.
+  3. GodTalk Mobile App: React Native/Expo mobile app released on the App Store. It now includes a Gemini-powered Bible counseling LLM service on both the mobile app and GodTalk web page, using Firebase Functions to protect the API key and model fallback for reliability.
   4. Prediction Model Mini Project: Python, sklearn, pandas, model training and evaluation.
   5. Portfolio Chatbot: React chatbot UI with a Vercel serverless API, OpenAI API integration, prompt design, and private-key protection.
 - Education/training:
