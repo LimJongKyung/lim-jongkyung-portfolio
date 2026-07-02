@@ -826,6 +826,44 @@ main[lang="en"] #hero-title {
   padding: 24px;
 }
 
+.project-card.is-featured {
+  position: relative;
+  grid-column: span 2;
+  min-height: 390px;
+  border-color: rgba(77, 216, 255, 0.55);
+  background:
+    linear-gradient(135deg, rgba(77, 216, 255, 0.2), rgba(184, 244, 93, 0.08) 46%, rgba(13, 19, 27, 0.94)),
+    var(--panel-solid);
+  box-shadow:
+    0 26px 90px rgba(77, 216, 255, 0.16),
+    var(--shadow);
+  overflow: hidden;
+}
+
+.project-card.is-featured::before {
+  content: "REPORT READY";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 7px 10px;
+  border: 1px solid rgba(184, 244, 93, 0.5);
+  background: rgba(184, 244, 93, 0.12);
+  color: var(--lime);
+  font-size: 11px;
+  font-weight: 860;
+  letter-spacing: 0.08em;
+}
+
+.project-card.is-featured h3 {
+  max-width: 720px;
+  font-size: clamp(28px, 3vw, 42px);
+}
+
+.project-card.is-featured p {
+  max-width: 760px;
+  font-size: 17px;
+}
+
 .project-top {
   display: flex;
   align-items: center;
@@ -903,6 +941,34 @@ main[lang="en"] #hero-title {
   color: var(--ink);
   font-size: 14px;
   font-weight: 780;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.project-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(77, 216, 255, 0.44);
+  background: rgba(77, 216, 255, 0.12);
+}
+
+.project-link.is-cta {
+  min-height: 50px;
+  padding: 0 18px;
+  border-color: rgba(184, 244, 93, 0.72);
+  background: linear-gradient(135deg, var(--lime), var(--cyan));
+  color: #071019;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: 0 16px 36px rgba(77, 216, 255, 0.22);
+}
+
+.project-link.is-cta:hover {
+  border-color: rgba(255, 255, 255, 0.86);
+  background: linear-gradient(135deg, #d7ff82, #76e6ff);
+  box-shadow: 0 20px 46px rgba(77, 216, 255, 0.32);
 }
 
 .contact-section {
@@ -926,6 +992,10 @@ main[lang="en"] #hero-title {
   .skills-grid,
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-card.is-featured {
+    grid-column: span 2;
   }
 }
 
@@ -1027,6 +1097,17 @@ main[lang="en"] #hero-title {
   .skills-grid,
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .project-card.is-featured {
+    grid-column: span 1;
+  }
+
+  .project-card.is-featured::before {
+    position: static;
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 18px;
   }
 
   .contact-actions {

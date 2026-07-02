@@ -51,7 +51,7 @@ const copy = {
     skillsLabel: "기술스택",
     skillsCopy: "백엔드 안정성, AI 실험력, 프론트 구현력을 한 프로젝트 흐름 안에서 연결합니다.",
     projectsLabel: "프로젝트",
-    projectsCopy: "웹사이트, 앱스토어, PDF 자료를 각 프로젝트 카드에서 바로 확인할 수 있습니다.",
+    projectsCopy: "대표 프로젝트의 PDF와 PPT 자료를 강조해 바로 확인할 수 있도록 구성했습니다.",
     chatbotLabel: "포트폴리오 챗봇",
     chatbotTitle: "임종경 봇",
     chatbotCopy:
@@ -96,7 +96,7 @@ const copy = {
     skillsLabel: "Skills",
     skillsCopy: "I connect backend reliability, AI experimentation, and frontend implementation within a complete project workflow.",
     projectsLabel: "Projects",
-    projectsCopy: "Open live websites, App Store pages, and project PDFs directly from each project card.",
+    projectsCopy: "Open highlighted PDF and PPT materials directly from the featured project cards.",
     chatbotLabel: "Portfolio Chatbot",
     chatbotTitle: "Lim Jongkyung Bot",
     chatbotCopy:
@@ -154,6 +154,30 @@ const skillGroups = [
 ];
 
 const projects = [
+  {
+    title: "Pneumonia X-ray Classification",
+    type: "Featured · Deep Learning",
+    icon: BrainCircuit,
+    featured: true,
+    description:
+      localized(
+        "데이콘 폐렴 X-ray 이미지 분류 해커톤에서 EfficientNet-B0, ResNet18, ResNet34 앙상블과 validation 기반 threshold tuning을 적용해 초기 0.9455에서 최종 0.9519 Accuracy로 개선한 프로젝트입니다.",
+        "A Dacon pneumonia X-ray classification project that improved Accuracy from 0.9455 to 0.9519 using an EfficientNet-B0, ResNet18, and ResNet34 ensemble with validation-based threshold tuning.",
+      ),
+    tags: ["PyTorch", "EfficientNet-B0", "ResNet", "Ensemble", "Grad-CAM", "Accuracy 0.9519"],
+    links: [
+      {
+        label: localized("PDF 보고서 보기", "View PDF Report"),
+        href: assetPath("pneumonia-xray-v41-portfolio.pdf"),
+        cta: true,
+      },
+      {
+        label: localized("PPT 발표자료 열기", "Open PPT Deck"),
+        href: assetPath("pneumonia-xray-v41-portfolio.pptx"),
+        cta: true,
+      },
+    ],
+  },
   {
     title: "Spring Boot Backend Service",
     type: "Backend",
@@ -552,7 +576,7 @@ function App() {
           {projects.map((project) => {
             const Icon = project.icon;
             return (
-              <article className="project-card" key={project.title}>
+              <article className={`project-card${project.featured ? " is-featured" : ""}`} key={project.title}>
                 <div className="project-top">
                   <span>{project.type}</span>
                   <Icon size={22} />
@@ -581,7 +605,7 @@ function App() {
                 <div className="project-links">
                   {project.links.map((link) => (
                     <a
-                      className="project-link"
+                      className={`project-link${link.cta ? " is-cta" : ""}`}
                       href={link.href}
                       key={t(link.label)}
                       target={link.internal ? undefined : "_blank"}
