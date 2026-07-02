@@ -51,7 +51,7 @@ const copy = {
     skillsLabel: "기술스택",
     skillsCopy: "백엔드 안정성, AI 실험력, 프론트 구현력을 한 프로젝트 흐름 안에서 연결합니다.",
     projectsLabel: "프로젝트",
-    projectsCopy: "대표 프로젝트의 PDF와 PPT 자료를 강조해 바로 확인할 수 있도록 구성했습니다.",
+    projectsCopy: "AI 모델링, 백엔드, 모바일, 웹 프로젝트의 결과물과 실행 링크를 한눈에 확인할 수 있도록 정리했습니다.",
     chatbotLabel: "포트폴리오 챗봇",
     chatbotTitle: "임종경 봇",
     chatbotCopy:
@@ -96,7 +96,7 @@ const copy = {
     skillsLabel: "Skills",
     skillsCopy: "I connect backend reliability, AI experimentation, and frontend implementation within a complete project workflow.",
     projectsLabel: "Projects",
-    projectsCopy: "Open highlighted PDF and PPT materials directly from the featured project cards.",
+    projectsCopy: "Explore AI modeling, backend, mobile, and web projects with clear result links and project materials.",
     chatbotLabel: "Portfolio Chatbot",
     chatbotTitle: "Lim Jongkyung Bot",
     chatbotCopy:
@@ -155,25 +155,53 @@ const skillGroups = [
 
 const projects = [
   {
-    title: "Pneumonia X-ray Classification",
-    type: "Featured · Deep Learning",
+    title: "AI Modeling Projects",
+    type: "Featured · AI / ML / DL",
     icon: BrainCircuit,
     featured: true,
     description:
       localized(
-        "데이콘 폐렴 X-ray 이미지 분류 해커톤에서 EfficientNet-B0, ResNet18, ResNet34 앙상블과 validation 기반 threshold tuning을 적용해 초기 0.9455에서 최종 0.9519 Accuracy로 개선한 프로젝트입니다.",
-        "A Dacon pneumonia X-ray classification project that improved Accuracy from 0.9455 to 0.9519 using an EfficientNet-B0, ResNet18, and ResNet34 ensemble with validation-based threshold tuning.",
+        "의료/헬스케어 데이터를 기반으로 모델 학습, 검증, 성능 개선, 결과 보고서 제작까지 수행한 AI 프로젝트 모음입니다. 폐렴 X-ray 분류와 난임 예측 모델을 하나의 AI 포트폴리오로 정리했습니다.",
+        "A combined AI portfolio covering model training, validation, performance improvement, and reporting for healthcare data projects, including pneumonia X-ray classification and infertility prediction.",
       ),
-    tags: ["PyTorch", "EfficientNet-B0", "ResNet", "Ensemble", "Grad-CAM", "Accuracy 0.9519"],
+    tags: ["PyTorch", "sklearn", "pandas", "Ensemble", "Grad-CAM", "Healthcare AI"],
+    highlights: [
+      {
+        title: localized("폐렴 X-ray 이미지 분류", "Pneumonia X-ray Classification"),
+        metric: "Accuracy 0.9519",
+        body: localized(
+          "EfficientNet-B0, ResNet18, ResNet34 앙상블과 validation 기반 threshold tuning으로 초기 0.9455에서 최종 0.9519까지 개선했습니다.",
+          "Improved from 0.9455 to 0.9519 Accuracy using an EfficientNet-B0, ResNet18, and ResNet34 ensemble with validation-based threshold tuning.",
+        ),
+      },
+      {
+        title: localized("난임 예측 모델", "Infertility Prediction Model"),
+        metric: "Final Score 0.7402",
+        body: localized(
+          "데이터 전처리, feature engineering, 모델 학습 및 평가를 통해 난임 예측 문제의 성능 개선 가능성을 검증했습니다.",
+          "Validated performance improvement for infertility prediction through preprocessing, feature engineering, model training, and evaluation.",
+        ),
+      },
+    ],
     links: [
       {
-        label: localized("PDF 보고서 보기", "View PDF Report"),
+        label: localized("폐렴 PDF 보고서", "Pneumonia PDF"),
         href: assetPath("pneumonia-xray-v41-portfolio.pdf"),
         cta: true,
       },
       {
-        label: localized("PPT 발표자료 열기", "Open PPT Deck"),
+        label: localized("폐렴 PPT 발표자료", "Pneumonia PPT"),
         href: assetPath("pneumonia-xray-v41-portfolio.pptx"),
+        cta: true,
+      },
+      {
+        label: localized("난임 PDF 보고서", "Infertility PDF"),
+        href: assetPath("prediction-mini-project.pdf"),
+        cta: true,
+      },
+      {
+        label: localized("난임 PPT 발표자료", "Infertility PPT"),
+        href: assetPath("prediction-mini-project.pptx"),
         cta: true,
       },
     ],
@@ -188,6 +216,16 @@ const projects = [
         "A Spring Boot backend project designed around domain-driven structure and reliable API flows.",
       ),
     tags: ["Spring Boot", "Java", "JPA", "REST API"],
+    highlights: [
+      {
+        title: localized("구현 범위", "Scope"),
+        metric: "User + Admin",
+        body: localized(
+          "사용자 페이지와 관리자 페이지를 분리해 실제 서비스 운영 흐름을 확인할 수 있게 구성했습니다.",
+          "Separated user and admin pages so the operational service flow can be reviewed directly.",
+        ),
+      },
+    ],
     links: [
       {
         label: localized("사용자 페이지", "User Page"),
@@ -217,6 +255,16 @@ const projects = [
         "A biblical archaeology website built with React components and responsive layouts. I designed the content flow for convenient exploration and deployed the production site with Firebase.",
       ),
     tags: ["React", "JavaScript", "Firebase", "Responsive Web", "Frontend"],
+    highlights: [
+      {
+        title: localized("배포 형태", "Deployment"),
+        metric: "Live Web",
+        body: localized(
+          "콘텐츠 탐색 흐름과 반응형 화면을 직접 설계하고 Firebase 기반으로 배포했습니다.",
+          "Designed the content flow and responsive UI, then deployed the site with Firebase.",
+        ),
+      },
+    ],
     links: [
       {
         label: localized("사이트 보기", "View Site"),
@@ -234,6 +282,16 @@ const projects = [
         "A React Native mobile application officially released on the App Store. I added a Gemini-powered Bible counseling LLM service to both the mobile app and website, protecting the API key through Firebase Functions and adding model fallback for production use.",
       ),
     tags: ["React Native", "Expo", "Gemini API", "LLM", "Firebase Functions", "App Store"],
+    highlights: [
+      {
+        title: localized("출시 결과", "Release"),
+        metric: "App Store",
+        body: localized(
+          "모바일 앱 출시 이후 Gemini 기반 말씀상담 LLM을 앱과 웹에 연동했습니다.",
+          "Released the mobile app and integrated a Gemini-powered counseling LLM across app and web.",
+        ),
+      },
+    ],
     links: [
       {
         label: localized("앱스토어 보기", "View on App Store"),
@@ -242,23 +300,6 @@ const projects = [
       {
         label: localized("GodTalk 홈페이지", "GodTalk Website"),
         href: "https://godtalk-6cd29.web.app/",
-      },
-    ],
-  },
-  {
-    title: "Prediction Model Mini Project",
-    type: "AI",
-    icon: BrainCircuit,
-    description:
-      localized(
-        "데이터 전처리, 모델 학습, 성능 평가를 거쳐 문제 해결 가능성을 검증한 머신러닝 프로젝트입니다.",
-        "A machine-learning project covering data preprocessing, model training, and performance evaluation to validate a predictive solution.",
-      ),
-    tags: ["Python", "sklearn", "pandas", "Evaluation"],
-    links: [
-      {
-        label: localized("PDF 보기", "View PDF"),
-        href: assetPath("prediction-mini-project.pdf"),
       },
     ],
   },
@@ -272,6 +313,16 @@ const projects = [
         "A serverless API chatbot that helps visitors quickly explore skills, projects, and education history. Questions are handled through a Vercel function so the OpenAI API key is not exposed in the browser.",
       ),
     tags: ["OpenAI API", "Vercel Function", "React", "Prompt Design"],
+    highlights: [
+      {
+        title: localized("보안 구조", "Security"),
+        metric: "Serverless API",
+        body: localized(
+          "OpenAI API 키가 브라우저에 노출되지 않도록 Vercel 서버리스 함수로 질문을 처리합니다.",
+          "Uses a Vercel serverless function so the OpenAI API key is never exposed in the browser.",
+        ),
+      },
+    ],
     links: [
       {
         label: localized("챗봇 열기", "Open Chatbot"),
@@ -588,6 +639,17 @@ function App() {
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
+                {project.highlights && (
+                  <div className="project-highlights">
+                    {project.highlights.map((item) => (
+                      <div className="project-highlight" key={t(item.title)}>
+                        <strong>{t(item.title)}</strong>
+                        <span>{item.metric}</span>
+                        <p>{t(item.body)}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 {project.testAccount && (
                   <div className="test-account">
                     <strong>{text.testAccount}</strong>
