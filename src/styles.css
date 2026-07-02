@@ -854,42 +854,6 @@ main[lang="en"] #hero-title {
     var(--shadow);
 }
 
-.project-card.is-featured {
-  grid-column: span 3;
-  min-height: 430px;
-  border-color: rgba(77, 216, 255, 0.55);
-  background:
-    linear-gradient(135deg, rgba(77, 216, 255, 0.2), rgba(184, 244, 93, 0.08) 46%, rgba(13, 19, 27, 0.94)),
-    var(--panel-solid);
-  box-shadow:
-    0 26px 90px rgba(77, 216, 255, 0.16),
-    var(--shadow);
-}
-
-.project-card.is-featured::before {
-  content: "AI REPORTS READY";
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 7px 10px;
-  border: 1px solid rgba(184, 244, 93, 0.5);
-  background: rgba(184, 244, 93, 0.12);
-  color: var(--lime);
-  font-size: 11px;
-  font-weight: 860;
-  letter-spacing: 0.08em;
-}
-
-.project-card.is-featured h3 {
-  max-width: 720px;
-  font-size: clamp(28px, 3vw, 42px);
-}
-
-.project-card.is-featured p {
-  max-width: 880px;
-  font-size: 17px;
-}
-
 .project-top {
   display: flex;
   align-items: center;
@@ -915,10 +879,6 @@ main[lang="en"] #hero-title {
   grid-template-columns: 1fr;
   gap: 10px;
   margin-top: 18px;
-}
-
-.project-card.is-featured .project-highlights {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .project-highlight {
@@ -1065,9 +1025,6 @@ main[lang="en"] #hero-title {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .project-card.is-featured {
-    grid-column: span 2;
-  }
 }
 
 @media (max-width: 760px) {
@@ -1168,21 +1125,6 @@ main[lang="en"] #hero-title {
   .skills-grid,
   .projects-grid {
     grid-template-columns: 1fr;
-  }
-
-  .project-card.is-featured {
-    grid-column: span 1;
-  }
-
-  .project-card.is-featured .project-highlights {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card.is-featured::before {
-    position: static;
-    display: inline-flex;
-    width: fit-content;
-    margin-bottom: 18px;
   }
 
   .contact-actions {

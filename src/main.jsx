@@ -155,27 +155,51 @@ const skillGroups = [
 
 const projects = [
   {
-    title: "AI Modeling Projects",
-    type: "Featured · AI / ML / DL",
+    title: "Pneumonia X-ray Classification",
+    type: "Deep Learning",
     icon: BrainCircuit,
-    featured: true,
     description:
       localized(
-        "의료/헬스케어 데이터를 기반으로 모델 학습, 검증, 성능 개선, 결과 보고서 제작까지 수행한 AI 프로젝트 모음입니다. 폐렴 X-ray 분류와 난임 예측 모델을 하나의 AI 포트폴리오로 정리했습니다.",
-        "A combined AI portfolio covering model training, validation, performance improvement, and reporting for healthcare data projects, including pneumonia X-ray classification and infertility prediction.",
+        "데이콘 폐렴 X-ray 이미지 분류 해커톤에서 EfficientNet-B0, ResNet18, ResNet34 앙상블과 validation 기반 threshold tuning을 적용해 성능을 개선한 딥러닝 프로젝트입니다.",
+        "A Dacon pneumonia X-ray classification project using an EfficientNet-B0, ResNet18, and ResNet34 ensemble with validation-based threshold tuning.",
       ),
-    tags: ["PyTorch", "sklearn", "pandas", "Ensemble", "Grad-CAM", "Healthcare AI"],
+    tags: ["PyTorch", "EfficientNet-B0", "ResNet", "Ensemble", "Grad-CAM"],
     highlights: [
       {
-        title: localized("폐렴 X-ray 이미지 분류", "Pneumonia X-ray Classification"),
+        title: localized("최종 성과", "Final Result"),
         metric: "Accuracy 0.9519",
         body: localized(
           "EfficientNet-B0, ResNet18, ResNet34 앙상블과 validation 기반 threshold tuning으로 초기 0.9455에서 최종 0.9519까지 개선했습니다.",
           "Improved from 0.9455 to 0.9519 Accuracy using an EfficientNet-B0, ResNet18, and ResNet34 ensemble with validation-based threshold tuning.",
         ),
       },
+    ],
+    links: [
       {
-        title: localized("난임 예측 모델", "Infertility Prediction Model"),
+        label: localized("PDF 보고서", "PDF Report"),
+        href: assetPath("pneumonia-xray-v41-portfolio.pdf"),
+        cta: true,
+      },
+      {
+        label: localized("PPT 발표자료", "PPT Deck"),
+        href: assetPath("pneumonia-xray-v41-portfolio.pptx"),
+        cta: true,
+      },
+    ],
+  },
+  {
+    title: "Infertility Prediction Model",
+    type: "Machine Learning",
+    icon: BrainCircuit,
+    description:
+      localized(
+        "난임 예측 데이터를 기반으로 전처리, feature engineering, 모델 학습, 평가를 수행해 예측 성능 개선 가능성을 검증한 머신러닝 프로젝트입니다.",
+        "A machine-learning project for infertility prediction, covering preprocessing, feature engineering, model training, and evaluation.",
+      ),
+    tags: ["Python", "sklearn", "pandas", "Feature Engineering", "Evaluation"],
+    highlights: [
+      {
+        title: localized("최종 성과", "Final Result"),
         metric: "Final Score 0.7402",
         body: localized(
           "데이터 전처리, feature engineering, 모델 학습 및 평가를 통해 난임 예측 문제의 성능 개선 가능성을 검증했습니다.",
@@ -185,22 +209,12 @@ const projects = [
     ],
     links: [
       {
-        label: localized("폐렴 PDF 보고서", "Pneumonia PDF"),
-        href: assetPath("pneumonia-xray-v41-portfolio.pdf"),
-        cta: true,
-      },
-      {
-        label: localized("폐렴 PPT 발표자료", "Pneumonia PPT"),
-        href: assetPath("pneumonia-xray-v41-portfolio.pptx"),
-        cta: true,
-      },
-      {
-        label: localized("난임 PDF 보고서", "Infertility PDF"),
+        label: localized("PDF 보고서", "PDF Report"),
         href: assetPath("prediction-mini-project.pdf"),
         cta: true,
       },
       {
-        label: localized("난임 PPT 발표자료", "Infertility PPT"),
+        label: localized("PPT 발표자료", "PPT Deck"),
         href: assetPath("prediction-mini-project.pptx"),
         cta: true,
       },
@@ -230,10 +244,12 @@ const projects = [
       {
         label: localized("사용자 페이지", "User Page"),
         href: "https://refreshmarket-1069542000196.asia-northeast3.run.app/",
+        cta: true,
       },
       {
         label: localized("관리자 페이지", "Admin Page"),
         href: "https://refreshmarket-management-1069542000196.asia-northeast3.run.app/",
+        cta: true,
       },
     ],
     testAccount: {
@@ -269,6 +285,7 @@ const projects = [
       {
         label: localized("사이트 보기", "View Site"),
         href: "https://sjs-biblical-archaeology.web.app/",
+        cta: true,
       },
     ],
   },
@@ -296,10 +313,12 @@ const projects = [
       {
         label: localized("앱스토어 보기", "View on App Store"),
         href: "https://apps.apple.com/kr/app/godtalk-%EA%B0%93%ED%86%A1/id6757742863",
+        cta: true,
       },
       {
         label: localized("GodTalk 홈페이지", "GodTalk Website"),
         href: "https://godtalk-6cd29.web.app/",
+        cta: true,
       },
     ],
   },
@@ -328,6 +347,7 @@ const projects = [
         label: localized("챗봇 열기", "Open Chatbot"),
         href: "#chatbot",
         internal: true,
+        cta: true,
       },
     ],
   },
@@ -627,7 +647,7 @@ function App() {
           {projects.map((project) => {
             const Icon = project.icon;
             return (
-              <article className={`project-card${project.featured ? " is-featured" : ""}`} key={project.title}>
+              <article className="project-card" key={project.title}>
                 <div className="project-top">
                   <span>{project.type}</span>
                   <Icon size={22} />

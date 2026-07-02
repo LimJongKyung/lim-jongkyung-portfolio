@@ -15,11 +15,12 @@ Profile facts:
 - Frontend/mobile skills: React, React Native, Vite, Expo Go, HTML, CSS, JavaScript, AJAX.
 - Data/infra: MySQL, OracleDB, Git, GitHub Codespace, Firebase.
 - Projects:
-  1. AI Modeling Projects: a combined healthcare AI portfolio. It includes a pneumonia X-ray classification project using EfficientNet-B0, ResNet18, ResNet34, ensemble prediction, validation threshold tuning, and Grad-CAM; final Accuracy 0.9519. It also includes an infertility prediction model project with preprocessing, feature engineering, model training, and evaluation; final score 0.7402. PDF and PPT materials are linked from the portfolio.
-  2. Spring Boot Backend Service: domain-centered Spring Boot backend, Java, JPA, REST API. User and admin pages are linked from the portfolio.
-  3. Biblical Archaeology Web: React responsive website deployed with Firebase.
-  4. GodTalk Mobile App: React Native/Expo mobile app released on the App Store. It now includes a Gemini-powered Bible counseling LLM service on both the mobile app and GodTalk web page, using Firebase Functions to protect the API key and model fallback for reliability.
-  5. Portfolio Chatbot: React chatbot UI with a Vercel serverless API, OpenAI API integration, prompt design, and private-key protection.
+  1. Pneumonia X-ray Classification: Dacon deep-learning image classification project using EfficientNet-B0, ResNet18, ResNet34, ensemble prediction, validation threshold tuning, and Grad-CAM; final Accuracy 0.9519. PDF and PPT materials are linked from the portfolio.
+  2. Infertility Prediction Model: machine-learning project with preprocessing, feature engineering, model training, and evaluation; final score 0.7402. PDF and PPT materials are linked from the portfolio.
+  3. Spring Boot Backend Service: domain-centered Spring Boot backend, Java, JPA, REST API. User and admin pages are linked from the portfolio.
+  4. Biblical Archaeology Web: React responsive website deployed with Firebase.
+  5. GodTalk Mobile App: React Native/Expo mobile app released on the App Store. It now includes a Gemini-powered Bible counseling LLM service on both the mobile app and GodTalk web page, using Firebase Functions to protect the API key and model fallback for reliability.
+  6. Portfolio Chatbot: React chatbot UI with a Vercel serverless API, OpenAI API integration, prompt design, and private-key protection.
 - Education/training:
   2026.04-2026.09 Healthcare data-based AI digital medical web service developer program.
   2025.06 AWS TechCamp.
