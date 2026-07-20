@@ -9,21 +9,15 @@ npm install
 npm run dev
 ```
 
-## GitHub Pages 배포
+## Vercel 배포
 
-이 프로젝트는 `LimJongKyung/lim-jongkyung-portfolio` 저장소의 GitHub Pages 경로에 맞춰져 있습니다.
+이 프로젝트는 `LimJongKyung/lim-jongkyung-portfolio` 저장소와 연결된 Vercel에서 배포합니다. `main` 브랜치에 push하면 프로덕션 배포가 갱신됩니다.
 
-예상 배포 주소:
-
-```text
-https://limjongkyung.github.io/lim-jongkyung-portfolio/
-```
-
-GitHub 저장소에서 `Settings` → `Pages` → `Build and deployment` → `Source`를 `GitHub Actions`로 설정하면, `main` 브랜치에 push할 때 자동 배포됩니다.
+Vite의 빌드 명령은 `npm run build`, 출력 디렉터리는 `dist`입니다.
 
 ## 포트폴리오 챗봇 API
 
-챗봇은 OpenAI API 키를 브라우저에 노출하지 않기 위해 서버리스 API(`/api/portfolio-chat`)를 사용합니다. GitHub Pages는 서버리스 함수를 실행하지 않으므로, 실제 API 챗봇을 활성화하려면 Vercel 같은 서버리스 호스팅에 연결해 주세요.
+챗봇은 OpenAI API 키를 브라우저에 노출하지 않기 위해 Vercel 서버리스 API(`/api/portfolio-chat`)를 사용합니다.
 
 Vercel 환경변수:
 

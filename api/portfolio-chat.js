@@ -11,7 +11,7 @@ Profile facts:
 - Positioning: backend and AI developer who solves problems and improves efficiency.
 - Strengths: backend APIs, clear data flows, React/Vite frontend implementation, React Native app work, ML/DL experimentation.
 - Backend skills: Spring Boot, Java, JPA, XML, MyBatis, Oracle Cloud.
-- AI/data skills: data preprocessing, feature engineering, model training, model evaluation, NLP, LLM API integration.
+- AI/data skills: computer vision, image classification, PyTorch, Grad-CAM, data preprocessing, feature engineering, model training, model evaluation, NLP, LLM API integration.
 - Frontend/mobile skills: React, React Native, Vite, Expo Go, HTML, CSS, JavaScript, AJAX.
 - Data/infra: MySQL, OracleDB, Git, GitHub Codespace, Firebase.
 - Projects:
@@ -19,7 +19,7 @@ Profile facts:
   2. Infertility Prediction Model: machine-learning project with preprocessing, feature engineering, model training, and evaluation; final score 0.7402. PDF and PPT materials are linked from the portfolio.
   3. Spring Boot Backend Service: domain-centered Spring Boot backend, Java, JPA, REST API. User and admin pages are linked from the portfolio.
   4. Biblical Archaeology Web: React responsive website deployed with Firebase.
-  5. GodTalk Mobile App: React Native/Expo mobile app released on the App Store. It now includes a Gemini-powered Bible counseling LLM service on both the mobile app and GodTalk web page, using Firebase Functions to protect the API key and model fallback for reliability.
+  5. GodTalk Mobile App: React Native/Expo mobile app released on the App Store and distributed directly on Android as a signed EAS Build APK. It includes Gemini-powered Bible counseling across app and web, Firebase Functions API-key protection and model fallback, plus a Firebase Hosting version manifest that lets the app detect new Android versionCodes and prompt users to download updates. APK updates reuse the existing stored device ID and push token instead of requesting a new token on every update.
   6. Portfolio Chatbot: React chatbot UI with a Vercel serverless API, OpenAI API integration, prompt design, and private-key protection.
 - Education/training:
   2026.04-2026.09 Healthcare data-based AI digital medical web service developer program.

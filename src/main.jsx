@@ -133,6 +133,10 @@ const skillGroups = [
     title: "ML/DL & AI",
     icon: BrainCircuit,
     items: [
+      "Computer Vision",
+      "Image Classification",
+      "PyTorch",
+      "Grad-CAM",
       "Data Preprocessing",
       "Feature Engineering",
       "Model Training",
@@ -295,17 +299,17 @@ const projects = [
     icon: Smartphone,
     description:
       localized(
-        "React Native로 개발하고 App Store에 정식 출시한 모바일 앱 프로젝트입니다. 모바일 앱과 웹사이트에 Gemini 기반 말씀상담 LLM 서비스를 연동했으며, Firebase Functions로 API 키를 보호하고 모델 fallback을 구성해 실제 서비스 형태로 구현했습니다.",
-        "A React Native mobile application officially released on the App Store. I added a Gemini-powered Bible counseling LLM service to both the mobile app and website, protecting the API key through Firebase Functions and adding model fallback for production use.",
+        "React Native로 개발해 App Store에 정식 출시하고 Android APK도 자체 배포한 모바일 앱입니다. Gemini 기반 말씀상담을 앱과 웹에 연동했으며, Firebase Functions로 API 키를 보호하고 Firebase Hosting 기반 Android 버전 확인 및 업데이트 흐름을 구현했습니다.",
+        "A React Native mobile app released on the App Store and distributed directly as a signed Android APK. It integrates Gemini-powered Bible counseling across app and web, protects API keys with Firebase Functions, and provides an Android version-check and update flow through Firebase Hosting.",
       ),
-    tags: ["React Native", "Expo", "Gemini API", "LLM", "Firebase Functions", "App Store"],
+    tags: ["React Native", "Expo", "EAS Build", "Gemini API", "Firebase Functions", "APK Distribution"],
     highlights: [
       {
-        title: localized("출시 결과", "Release"),
-        metric: "App Store",
+        title: localized("출시 및 업데이트", "Release & Updates"),
+        metric: "iOS + Android",
         body: localized(
-          "모바일 앱 출시 이후 Gemini 기반 말씀상담 LLM을 앱과 웹에 연동했습니다.",
-          "Released the mobile app and integrated a Gemini-powered counseling LLM across app and web.",
+          "iOS는 App Store에 출시하고 Android는 서명된 APK로 자체 배포했습니다. 앱이 최신 versionCode를 확인해 업데이트를 안내하며, 기존 설치 위에 업데이트할 때 저장된 기기 ID와 푸시 토큰을 재사용합니다.",
+          "Released on the App Store and distributed Android as a signed APK. The app checks the latest versionCode, prompts for updates, and reuses the stored device ID and push token when installed over the existing app.",
         ),
       },
     ],
@@ -318,6 +322,11 @@ const projects = [
       {
         label: localized("GodTalk 홈페이지", "GodTalk Website"),
         href: "https://godtalk-6cd29.web.app/",
+        cta: true,
+      },
+      {
+        label: localized("Android 다운로드", "Download for Android"),
+        href: "https://godtalk-6cd29.web.app/download",
         cta: true,
       },
     ],
