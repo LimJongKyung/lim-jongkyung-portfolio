@@ -4,6 +4,7 @@ import {
   ArrowUpRight,
   BrainCircuit,
   Bot,
+  BookOpen,
   Code2,
   Database,
   Layers,
@@ -26,6 +27,7 @@ const navItems = [
   { label: localized("소개", "About"), href: "#about" },
   { label: localized("기술스택", "Skills"), href: "#skills" },
   { label: localized("프로젝트", "Projects"), href: "#projects" },
+  { label: localized("읽은 책", "Books"), href: "#books" },
   { label: localized("교육", "Education"), href: "#education" },
   { label: localized("연락처", "Contact"), href: "#contact" },
 ];
@@ -52,6 +54,11 @@ const copy = {
     skillsCopy: "백엔드 안정성, AI 실험력, 프론트 구현력을 한 프로젝트 흐름 안에서 연결합니다.",
     projectsLabel: "프로젝트",
     projectsCopy: "AI 모델링, 백엔드, 모바일, 웹 프로젝트의 결과물과 실행 링크를 한눈에 확인할 수 있도록 정리했습니다.",
+    booksLabel: "읽은 책",
+    booksTitle: "배움의 기반이 된 기술 서적",
+    booksCopy:
+      "기초 문법부터 백엔드, 데이터베이스, 모바일, 머신러닝까지 직접 읽고 실습하며 개발 역량을 넓혀온 책들입니다.",
+    bookDetail: "도서 정보 보기",
     chatbotLabel: "포트폴리오 챗봇",
     chatbotTitle: "임종경 봇",
     chatbotCopy:
@@ -97,6 +104,11 @@ const copy = {
     skillsCopy: "I connect backend reliability, AI experimentation, and frontend implementation within a complete project workflow.",
     projectsLabel: "Projects",
     projectsCopy: "Explore AI modeling, backend, mobile, and web projects with clear result links and project materials.",
+    booksLabel: "Books",
+    booksTitle: "Technical books behind the work",
+    booksCopy:
+      "Books I studied and practiced with, spanning programming fundamentals, backend, databases, mobile development, and machine learning.",
+    bookDetail: "View book",
     chatbotLabel: "Portfolio Chatbot",
     chatbotTitle: "Lim Jongkyung Bot",
     chatbotCopy:
@@ -359,6 +371,51 @@ const projects = [
         cta: true,
       },
     ],
+  },
+];
+
+const books = [
+  {
+    title: "핸즈온 머신러닝",
+    category: localized("머신러닝 · 딥러닝", "Machine Learning · Deep Learning"),
+    cover: "books/hands-on-machine-learning.jpg",
+    href: "https://book.phose.co.kr/goods/goods_view.php?goodsNo=1000477843",
+  },
+  {
+    title: "파이썬 머신러닝 완벽 가이드",
+    category: localized("머신러닝 · 데이터", "Machine Learning · Data"),
+    cover: "books/python-machine-learning-guide.jpg",
+    href: "https://www.yes24.com/Product/Goods/139869321",
+  },
+  {
+    title: "김범준의 핸즈온 리액트 네이티브",
+    category: localized("모바일 · 프론트엔드", "Mobile · Frontend"),
+    cover: "books/hands-on-react-native.jpg",
+    href: "https://www.hanbit.co.kr/store/books/look.php?p_code=B2920695216",
+  },
+  {
+    title: "Do it! 점프 투 파이썬",
+    category: localized("프로그래밍 기초 · Python", "Programming Basics · Python"),
+    cover: "books/jump-to-python.jpg",
+    href: "https://www.yes24.com/product/goods/74419916",
+  },
+  {
+    title: "Do it! MySQL로 배우는 SQL 입문",
+    category: localized("데이터베이스 · SQL", "Database · SQL"),
+    cover: "books/mysql-sql-intro.png",
+    href: "https://www.easyspub.co.kr/20_Menu/BookView/665",
+  },
+  {
+    title: "Do it! 점프 투 자바",
+    category: localized("백엔드 · Java", "Backend · Java"),
+    cover: "books/jump-to-java.png",
+    href: "https://product.kyobobook.co.kr/detail/S000203246484",
+  },
+  {
+    title: "Do it! 자바 완전 정복",
+    category: localized("백엔드 · Java", "Backend · Java"),
+    cover: "books/java-complete.jpg",
+    href: "https://product.kyobobook.co.kr/detail/S000001818032",
   },
 ];
 
@@ -717,6 +774,45 @@ function App() {
             );
           })}
         </div>
+      </section>
+
+      <section id="books" className="section books-section">
+        <div className="section-heading">
+          <div>
+            <div className="section-label">
+              <BookOpen size={15} />
+              {text.booksLabel}
+            </div>
+            <h2>{text.booksTitle}</h2>
+          </div>
+          <p>{text.booksCopy}</p>
+        </div>
+        <div className="books-grid">
+          {books.map((book, index) => (
+            <a
+              className="book-card"
+              href={book.href}
+              key={book.title}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${book.title} — ${text.bookDetail}`}
+            >
+              <span className="book-number">{String(index + 1).padStart(2, "0")}</span>
+              <div className="book-cover">
+                <img src={assetPath(book.cover)} alt={`${book.title} 표지`} loading="lazy" />
+              </div>
+              <div className="book-info">
+                <span className="book-category">{t(book.category)}</span>
+                <h3>{book.title}</h3>
+                <span className="book-link">
+                  {text.bookDetail}
+                  <ArrowUpRight size={15} />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div className="books-shelf" aria-hidden="true" />
       </section>
 
       <section id="education" className="section education-section">
